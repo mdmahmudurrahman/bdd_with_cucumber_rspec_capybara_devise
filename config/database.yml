@@ -1,0 +1,42 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: test-app_development
+  username: framgiavn
+  password: framgiavn
+  host: localhost
+  port: 5432
+
+
+test: &test
+  <<: *default
+  database: test-app_test
+  username: framgiavn
+  password: framgiavn
+  host: localhost
+  port: 5432
+
+production:
+  <<: *default
+  database: test-app_production
+  username: test-app
+  password: <%= ENV['TEST-APP_DATABASE_PASSWORD'] %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+cucumber:
+  <<: *test
